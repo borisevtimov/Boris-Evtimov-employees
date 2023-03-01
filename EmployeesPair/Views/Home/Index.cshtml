@@ -1,0 +1,47 @@
+﻿@model List<EntryViewModel>
+@{
+    ViewData["Title"] = "Find employees pairs";
+}
+<form class="main-form" action="/Home/GetResult" enctype="multipart/form-data" method="post">
+    <input type="file" name="svgFile" accept=".csv" />
+    <input type="submit" value="Get data from file!" />
+</form>
+<section class="result-section">
+    @if (Model != null)
+    {
+        @if (Model.Count != 0)
+        {
+            <h2>The longest working pair for a project was:</h2>
+            <p>
+                Employee ID#1 - @Model[0].FirstEmployeeID, Employee ID#2 - @Model[0].SecondEmployeeID
+                on project ID - @Model[0].ProjectID for @Model[0].DaysWorked days!
+            </p>
+            <h3>All the projects the pair has worked on:</h3>
+            <table class="main-table">
+                <thead>
+                    <tr>
+                        <th>Employee ID#1</th>
+                        <th>Employee ID#2</th>
+                        <th>Project ID</th>
+                        <th>Days worked</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (EntryViewModel entry in Model)
+                    {
+                        <tr>
+                            <td>@entry.FirstEmployeeID</td>
+                            <td>@entry.SecondEmployeeID</td>
+                            <td>@entry.ProjectID</td>
+                            <td>@entry.DaysWorked</td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        }
+        else
+        {
+            <p>There was not any pair found!</p>
+        }
+    }
+</section>

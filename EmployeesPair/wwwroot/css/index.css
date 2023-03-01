@@ -1,0 +1,27 @@
+﻿.main-form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 30px;
+    margin-bottom: 30px;
+}
+
+.result-section {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.main-table {
+    text-align: center;
+    border-collapse: collapse;
+}
+
+    .main-table td, th {
+        width: 15vw;
+        border: 1px solid black;
+    }
+
+    .main-table > tbody > tr:nth-of-type(2n - 1){
+        background-color: lightgray;
+    }
